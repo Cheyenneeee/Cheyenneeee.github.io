@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  	<title>Test</title>
+
+  	<style>
+  		
+  		body{
+  			display: flex;
+  			margin-top: 50px;
+  			margin-left: auto;
+  			margin-right: auto;
+  			align-content: center;
+  			justify-content: center;
+  		}
+
+		#canvasSky{
+			position: fixed;
+			top: 6.7%;
+			left: 3.5%;
+		}
+
+		#overlay{
+			z-index: 1;
+			position: absolute;
+			top: 0;
+			left:0;
+		}
+  		
+  	</style>
+
+  </head>
+  <body>
+
+	<img src="Rectangle 3overlay.svg" alt="overlayrectangle border" height = "87.4%" z-index = "2" id = "overlay">
+	
+	<canvas id="canvasSky" width="1365" height="574.74"></canvas>
+
+	
+
+	<script src="https://unpkg.com/rive-js@0.7.6/dist/rive.min.js"></script>
+
+    <script src="https://unpkg.com/@rive-app/canvas@1.0.98"></script>
+
+	 <script>
+        const r = new rive.Rive({
+            src: "sky.riv",
+            canvas: document.getElementById("canvasSky"),
+            autoplay: true,
+            arboard: "New Artboard",
+        });
+    </script>
+
+  </body>
+</html>
