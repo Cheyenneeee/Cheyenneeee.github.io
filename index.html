@@ -8,11 +8,13 @@
   		
   		body{
   			display: flex;
-  			margin-top: 50px;
+  			margin-top: 0;
   			margin-left: auto;
   			margin-right: auto;
   			align-content: center;
   			justify-content: center;
+			overflow-y: hidden;
+			overflow-x: scroll;
   		}
 
 		#canvasSky{
@@ -21,33 +23,125 @@
 			left: 3.5%;
 		}
 
-		#overlay{
-			z-index: 1;
-			position: absolute;
-			top: 0;
-			left:0;
+		.border {
+			display: grid;
+			grid-template-columns: 1fr 15fr 1fr;
+			grid-template-rows: 1.5fr 10fr 2.5fr;
+			grid-column-gap: 0px;
+			grid-row-gap: 0px;
+			z-index: 10;
+			position: fixed;
+
 		}
+
+		#top{
+			min-width: 100vw;
+			grid-column-start: 1;
+			grid-column-end: 4;
+			min-height: 80px;
+		}
+		
+		.border-bar{
+			background-color: rgb(67, 40, 75);
+		}
+
+		#bottom{
+			grid-column-start: 1;
+			grid-column-end: 4;
+			background-color: rgb(67, 40, 75);
+			min-width: 100vw;
+		}
+
+		#canvasSky{
+			z-index: 0;
+		}
+
+		.menu-bar{
+			display: flex;
+			min-width: 100vw;
+			justify-content: center;
+		}
+
+		.menu-item{
+			margin-left: 25px;
+			margin-right: 25px;
+			min-width: 100px;
+			text-align: center;
+			padding: 10px;
+		}
+
+		object{
+			height: 80px
+		}
+
   		
   	</style>
 
   </head>
   <body>
-	<object data="overlay.svg" height = "87.4%" z-index = "2" id = "overlay"> </object>
-	
-	<canvas id="canvasSky" width="1365" height="574.74"></canvas>
 
-	
+	<div id = "thing">
+		<canvas id="canvasSky" width="1365" height="574.74"></canvas> <!-- width="1365" height="574.74"-->
+	</div>
 
+	<div class = "border">
+
+	  	<div id = "top" class = "border-bar"></div>
+
+	  	<div id = "left" class = "border-bar"></div>
+
+		<div id = "mid"></div>
+
+	  	<div id = "right" class = "border-bar"></div>
+
+		<div id = "bottom" class = "menu-bar">
+			<div class = "menu-item">
+				<object data="character.svg"></object>
+			</div>
+			<div class = "menu-item">
+				<object data="abilities.svg"></object>
+			</div>
+			<div class = "menu-item">
+				<object data="othercharacters.svg"></object>
+			</div>
+			<div class = "menu-item">
+				<object data="stats.svg"></object>
+			</div>
+			<div class = "menu-item">
+				<object data="planet.svg"></object>
+			</div>
+			<div class = "menu-item" >
+				<object data="author.svg"></object>
+			</div>
+
+		</div>
+
+	</div>
+	
 	<script src="https://unpkg.com/rive-js@0.7.6/dist/rive.min.js"></script>
 
     <script src="https://unpkg.com/@rive-app/canvas@1.0.98"></script>
 
-	 <script>
+	<script>
         const r = new rive.Rive({
             src: "sky.riv",
             canvas: document.getElementById("canvasSky"),
             autoplay: true,
             arboard: "New Artboard",
+        
+        });
+
+        // makes horizontal scrolling possible
+        const element = document.querySelector("#thing");
+
+        element.addEventListener('wheel', (event) => 
+        {
+            event.preventDefault();
+            element.scrollBy(
+            {
+                left: event.deltaY < 0 ? -100 : 100,
+        
+            });
         });
     </script>
 
