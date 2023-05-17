@@ -19,14 +19,15 @@
 
 		#canvasSky{
 			position: fixed;
-			top: 6.7%;
-			left: 3.5%;
+			top: 0;
+			left: 0;
+			z-index: 0;
 		}
 
 		.border {
 			display: grid;
-			grid-template-columns: 1fr 15fr 1fr;
-			grid-template-rows: 1.5fr 10fr 2.5fr;
+			grid-template-columns: 1fr;
+			grid-template-rows:10fr 1.5fr;
 			grid-column-gap: 0px;
 			grid-row-gap: 0px;
 			z-index: 10;
@@ -34,26 +35,14 @@
 
 		}
 
-		#top{
-			min-width: 100vw;
-			grid-column-start: 1;
-			grid-column-end: 4;
-			min-height: 80px;
-		}
-		
-		.border-bar{
-			background-color: rgb(67, 40, 75);
-		}
-
 		#bottom{
+			position: fixed;
+			bottom: 0px;
+			left: 0px;
 			grid-column-start: 1;
 			grid-column-end: 4;
 			background-color: rgb(67, 40, 75);
 			min-width: 100vw;
-		}
-
-		#canvasSky{
-			z-index: 0;
 		}
 
 		.menu-bar{
@@ -79,20 +68,15 @@
 
   </head>
   <body>
+	<img id = "thing" src="sky.svg" alt="measures" style="z-index: 1; width: 2400px; height: 807px;">
 
-	<div id = "thing">
-		<canvas id="canvasSky" width="1365" height="574.74"></canvas> <!-- width="1365" height="574.74"-->
-	</div>
+	<!--<div id = "thing">
+		<canvas id="canvasSky" width = "1500" height = "631.58"></canvas>  width="1365" height="574.74"
+	</div>-->
+
+	
 
 	<div class = "border">
-
-	  	<div id = "top" class = "border-bar"></div>
-
-	  	<div id = "left" class = "border-bar"></div>
-
-		<div id = "mid"></div>
-
-	  	<div id = "right" class = "border-bar"></div>
 
 		<div id = "bottom" class = "menu-bar">
 			<div class = "menu-item">
@@ -128,7 +112,6 @@
             canvas: document.getElementById("canvasSky"),
             autoplay: true,
             arboard: "New Artboard",
-        
         });
 
         // makes horizontal scrolling possible
