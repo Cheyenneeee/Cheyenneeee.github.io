@@ -2,17 +2,12 @@
 <html lang="en">
   <head>
 
-  	<title>Test</title>
+  	<title>VIO202 | Theme 2</title>
 
   	<style>
   		
-  		body{
-  			display: flex;
-  			margin-top: 0;
-  			margin-left: auto;
-  			margin-right: auto;
-  			align-content: center;
-  			justify-content: center;
+  		body{	
+  			margin: 0;
 			overflow-y: hidden;
 			overflow-x: scroll;
   		}
@@ -41,7 +36,7 @@
 			left: 0px;
 			grid-column-start: 1;
 			grid-column-end: 4;
-			background-color: rgb(67, 40, 75);
+			background-color: #6583a9;
 			min-width: 100vw;
 		}
 
@@ -60,7 +55,13 @@
 		}
 
 		object{
-			height: 80px
+			height: 80px;
+		}
+
+		#thing{
+			top: 0px;
+			left: 0px;
+			position: fixed;
 		}
 
   		
@@ -68,40 +69,35 @@
 
   </head>
   <body>
-	<img id = "thing" src="sky.svg" alt="measures" style="z-index: 1; width: 2400px; height: 807px;">
+	<div id = "container">
+		
+		<img id = "thing" src="sky.svg" alt="measures" style="z-index: 1; width: 1477px; height: 615.52px; top: 0px;">
 
-	<!--<div id = "thing">
-		<canvas id="canvasSky" width = "1500" height = "631.58"></canvas>  width="1365" height="574.74"
-	</div>-->
-
-	
-
-	<div class = "border">
-
-		<div id = "bottom" class = "menu-bar">
-			<div class = "menu-item">
-				<object data="character.svg"></object>
-			</div>
-			<div class = "menu-item">
-				<object data="abilities.svg"></object>
-			</div>
-			<div class = "menu-item">
-				<object data="othercharacters.svg"></object>
-			</div>
-			<div class = "menu-item">
-				<object data="stats.svg"></object>
-			</div>
-			<div class = "menu-item">
-				<object data="planet.svg"></object>
-			</div>
-			<div class = "menu-item" >
-				<object data="author.svg"></object>
+		<div class = "border">
+			<div id = "bottom" class = "menu-bar">
+				<div class = "menu-item">
+					<object data="character.svg"></object>
+				</div>
+				<div class = "menu-item">
+					<object data="abilities.svg"></object>
+				</div>
+				<div class = "menu-item">
+					<object data="othercharacters.svg"></object>
+				</div>
+				<div class = "menu-item">
+					<object data="stats.svg"></object>
+				</div>
+				<div class = "menu-item">
+					<object data="planet.svg"></object>
+				</div>
+				<div class = "menu-item" >
+					<object data="author.svg"></object>
+				</div>
 			</div>
 
 		</div>
+	</div> <!--end #container-->
 
-	</div>
-	
 	<script src="https://unpkg.com/rive-js@0.7.6/dist/rive.min.js"></script>
 
     <script src="https://unpkg.com/@rive-app/canvas@1.0.98"></script>
@@ -114,18 +110,16 @@
             arboard: "New Artboard",
         });
 
-        // makes horizontal scrolling possible
-        const element = document.querySelector("#thing");
+		const element = document.querySelector("#container");
 
-        element.addEventListener('wheel', (event) => 
-        {
-            event.preventDefault();
-            element.scrollBy(
-            {
-                left: event.deltaY < 0 ? -100 : 100,
-        
-            });
-        });
+		element.addEventListener('wheel', (event) => {
+ 		 	event.preventDefault();
+
+  			element.scrollBy({
+    			left: event.deltaY < 0 ? -100 : 100,
+    
+  			});
+		});
     </script>
 
   </body>
