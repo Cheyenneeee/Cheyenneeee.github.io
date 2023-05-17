@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 
-  	<title>VIO202 | Theme 2</title>
+  	<title>Test</title>
 
   	<style>
   		
@@ -10,6 +10,9 @@
   			margin: 0;
 			overflow-y: hidden;
 			overflow-x: scroll;
+			background-image: url('sky.svg');
+			background-repeat: no-repeat;
+			background-size: 1477px 615.52px;
   		}
 
 		#canvasSky{
@@ -58,10 +61,8 @@
 			height: 80px;
 		}
 
-		#thing{
-			top: 0px;
-			left: 0px;
-			position: fixed;
+		#canvas{
+			z-index: 2;
 		}
 
   		
@@ -69,9 +70,12 @@
 
   </head>
   <body>
-	<div id = "container">
-		
-		<img id = "thing" src="sky.svg" alt="measures" style="z-index: 1; width: 1477px; height: 615.52px; top: 0px;">
+	<div id = "container" width = "97vw" height = "97vh">
+		<canvas id="canvas" width="9760px" height="610px"></canvas>
+	</div> <!--end #container-->
+
+
+	<!--<img id = "thing" src="sky.svg" alt="measures"> 1477px 615.52px -->
 
 		<div class = "border">
 			<div id = "bottom" class = "menu-bar">
@@ -96,7 +100,10 @@
 			</div>
 
 		</div>
-	</div> <!--end #container-->
+
+
+		
+		
 
 	<script src="https://unpkg.com/rive-js@0.7.6/dist/rive.min.js"></script>
 
@@ -104,8 +111,8 @@
 
 	<script>
         const r = new rive.Rive({
-            src: "sky.riv",
-            canvas: document.getElementById("canvasSky"),
+            src: "asset_timeline.riv",
+            canvas: document.getElementById("canvas"),
             autoplay: true,
             arboard: "New Artboard",
         });
